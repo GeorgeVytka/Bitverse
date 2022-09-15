@@ -1,0 +1,22 @@
+.buttonContainer{
+    background-color:#696969;
+    width: 120px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-right: 25px;
+    cursor: pointer
+}
+.name{
+  text-align: center;
+  color: white;
+  
+ 
+  
+}
+
+.buttonContainer:hover{
+background-color: #808080;
+}

@@ -1,0 +1,33 @@
+.articleContainer{
+   
+    width: 850px;
+    height: 250px;
+    display: flex;
+   margin-top: 10px;
+
+   margin-bottom: 10px;
+   border-bottom: 2px solid black;
+   cursor: pointer;
+}
+
+.imageStyle{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.textContainer{
+    margin: 10px;
+}
+
+.headline{
+    font-size: 20px;
+}
+
+.date{
+    font-size: 10px;
+}
+
+.author{
+    font-size: 12px;
+}

@@ -1,0 +1,43 @@
+.container{
+    height: 400px;
+    width: 250px;
+    background-color: aqua;
+    display: flex;
+    cursor: pointer;
+    background-image: url(https://placebeard.it/400x400);
+    transition: transform .2s;
+}
+
+.container::after {
+    
+        content: "";
+        position:absolute;
+        margin:-20px;
+        width:40px;
+        height:40px;
+        transform:rotate(45deg);
+        background-color:white; /* to see where it is */
+      
+  }
+  .container:hover{
+    transform: scale(1.1);
+  }
+
+.bottomTitle{
+    display: inline-block;
+    align-self: flex-end;
+    width: 100%;
+    background-color: black;
+    background-color: rgb(9, 8, 8);
+    background-color: rgba(14, 13, 13, 0.5);
+   
+}
+
+.titleText{
+    color: white;
+    display: inline-block;
+    align-self: flex-end;
+  
+}
+
+

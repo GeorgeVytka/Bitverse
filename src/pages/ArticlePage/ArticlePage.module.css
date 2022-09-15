@@ -1,0 +1,34 @@
+.pageContainer{
+    margin: 100px;
+   
+}
+
+.authorContianer{
+    border-bottom: 2px solid black;
+}
+.body{
+    
+    margin: 50px;
+}
+
+h1{
+    font-weight: bold;
+}
+.imgContainer{
+   margin-top: 25px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.imgStyle{
+    
+    width: 80%;
+}
+
+@media only screen and (max-width: 650px){
+    .pageContainer{
+        margin: 50px;
+       
+    }
+}
