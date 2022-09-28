@@ -3,6 +3,8 @@ import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import NewsBox from "../../components/NewsBox/NewsBox";
 import Button from "../../components/Button/Button";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import ArticleThumbnail from "../../components/ArticleThumbnail/ArticleThumbnail";
 import styles from "./HomePage.module.css";
 
@@ -14,27 +16,6 @@ const HomePage = () => {
   const [articleList, setArticleList] = useState({});
   let headline = [];
   let article = [];
-  const articles = [
-    {
-      title: "Marvel's Spider-Man PC: First Wave of ReSkin Mods Are Amazing",
-      date: "30mins",
-      author: "DudeBro",
-      image: "https://placebeard.it/300x300",
-    },
-    {
-      title: "Deal Alert: Score a Pair of $200 Razer Anzu",
-      date: "50mins",
-      author: "DudeBro",
-      image: "https://www.placecage.com/300/300",
-    },
-    ,
-    {
-      title: "Deal Alert: Score a Pair of $200 Razer Anzu",
-      date: "50mins",
-      author: "DudeBro",
-      image: "https://www.placecage.com/300/300",
-    },
-  ];
 
   useEffect(() => {
     // articleS = await axios.get("http://localhost:5005/api/v1/articles");
@@ -62,8 +43,27 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-  const switchType = (type) => {
-    setSelectedType(type);
+  const switchType = async (type) => {
+    //setSelectedType(type);
+
+    let objTemp = {
+      tags: "PC",
+    };
+
+    try {
+      const article = await axios.put(
+        "http://localhost:5005/api/v1/articles/tag",
+        {
+          tags: "PC",
+        }
+      );
+
+      // setSelectedType(article.data);
+      console.log("4$$$$$$$$$$$$$$$$______ ", article);
+    } catch (error) {
+      console.log(error);
+    }
+
     //.log(selectedType);
   };
 
@@ -99,16 +99,17 @@ const HomePage = () => {
 
       <div className={styles.tempStyle}>
         <div className={styles.gridContainer}>
-          <Button switchType={switchType} name={"PS5"} />
+          <Button switchType={switchType} name={"PLAYSTATION"} />
           <Button switchType={switchType} name={"XBOXS"} />
-          <Button switchType={switchType} name={"SWITCH"} />
+          <Button switchType={switchType} name={"NINTENDO"} />
           <Button switchType={switchType} name={"PC"} />
+          <Button switchType={switchType} name={"MOVIE"} />
+          <Button switchType={switchType} name={"TV"} />
         </div>
       </div>
 
       <div className={styles.articleContainer}>
         <div>
-          {console.log("this is article++++", articleInfo2.length)}
           {articleInfo2.length > 0 ? (
             articleInfo2.map((info, index) => (
               <ArticleThumbnail
@@ -127,6 +128,13 @@ const HomePage = () => {
           )}
         </div>
       </div>
+
+      <div>
+        <p>{selectedType.data}</p>
+      </div>
+      <Stack spacing={2}>
+        <Pagination count={10} shape="rounded" />
+      </Stack>
     </div>
   );
 };
