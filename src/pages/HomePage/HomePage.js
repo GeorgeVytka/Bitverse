@@ -3,8 +3,9 @@ import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import NewsBox from "../../components/NewsBox/NewsBox";
 import Button from "../../components/Button/Button";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+
+import CircularProgress from "@mui/material/CircularProgress";
+
 import ArticleThumbnail from "../../components/ArticleThumbnail/ArticleThumbnail";
 import styles from "./HomePage.module.css";
 
@@ -49,16 +50,16 @@ const HomePage = () => {
     let objTemp = {
       tags: "PC",
     };
-
+    setArticleInfo2([]);
     try {
       const article = await axios.put(
         "http://localhost:5005/api/v1/articles/tag",
         {
-          tags: "PC",
+          tags: type,
         }
       );
 
-      // setSelectedType(article.data);
+      setArticleInfo2(article.data);
       console.log("4$$$$$$$$$$$$$$$$______ ", article);
     } catch (error) {
       console.log(error);
@@ -124,17 +125,12 @@ const HomePage = () => {
               />
             ))
           ) : (
-            <p>loading</p>
+            <div className={styles.loadingContainer}>
+              <CircularProgress size={100} />
+            </div>
           )}
         </div>
       </div>
-
-      <div>
-        <p>{selectedType.data}</p>
-      </div>
-      <Stack spacing={2}>
-        <Pagination count={10} shape="rounded" />
-      </Stack>
     </div>
   );
 };
